@@ -21,6 +21,17 @@ except ImportError as e:
     st.error(f"Enhanced features not available: {e}")
     ENHANCED_AVAILABLE = False
 
+# Check API configuration
+EURI_API_KEY = os.getenv('EURI_API_KEY')
+GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
+
+if EURI_API_KEY:
+    st.success("✅ EURI API configured successfully!")
+elif GEMINI_API_KEY:
+    st.success("✅ Gemini API configured successfully!")
+else:
+    st.warning("⚠️ No API key configured. Some features may be limited.")
+
 # --- Helper Functions ---
 def provide_basic_solution(problem, language, complexity):
     """Provide a basic solution when enhanced features aren't available"""

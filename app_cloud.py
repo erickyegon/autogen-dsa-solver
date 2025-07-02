@@ -6,18 +6,46 @@ Optimized for Streamlit Cloud without Docker dependencies
 import streamlit as st
 import os
 import sys
+import requests
+import json
+from datetime import datetime
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import plotly.express as px
+import plotly.graph_objects as go
+
+# Configure page
+st.set_page_config(
+    page_title="DSA Solver - Community Health Optimization",
+    page_icon="🏥",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
 
 # Add current directory to path for imports
 sys.path.append(os.path.dirname(__file__))
 
-# Enhanced imports with fallback
-try:
-    from config.constants import SUPPORTED_LANGUAGES, LANGUAGE_CONFIG
-    from utils.problem_analyzer import AdvancedProblemAnalyzer
-    ENHANCED_AVAILABLE = True
-except ImportError as e:
-    st.error(f"Enhanced features not available: {e}")
-    ENHANCED_AVAILABLE = False
+# Check API configuration
+EURI_API_KEY = os.getenv('EURI_API_KEY')
+GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
+
+if EURI_API_KEY:
+    st.success("✅ EURI API configured successfully!")
+elif GEMINI_API_KEY:
+    st.success("✅ Gemini API configured successfully!")
+else:
+    st.warning("⚠️ No API key configured. Some features may be limited.")
+
+# Define supported languages
+SUPPORTED_LANGUAGES = {
+    "Python": {"extension": ".py", "comment": "#", "template": "python_template"},
+    "Java": {"extension": ".java", "comment": "//", "template": "java_template"},
+    "C++": {"extension": ".cpp", "comment": "//", "template": "cpp_template"},
+    "JavaScript": {"extension": ".js", "comment": "//", "template": "js_template"},
+    "R": {"extension": ".R", "comment": "#", "template": "r_template"}
+}
 
 # --- Helper Functions ---
 def provide_comprehensive_solution(problem, language, complexity):

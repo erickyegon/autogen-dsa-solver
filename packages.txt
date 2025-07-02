@@ -1,17 +1,4 @@
-# System packages required for the DSA Solver
-# These will be installed via apt-get on the Streamlit Cloud Ubuntu environment
-
-# For Docker support (if needed)
-# docker.io
-
-# For mathematical computations
 build-essential
 python3-dev
-
-# For network operations
 curl
 wget
-
-# For R support (optional)
-# r-base
-# r-base-dev
