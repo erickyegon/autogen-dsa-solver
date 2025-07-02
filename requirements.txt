@@ -34,3 +34,4 @@ typing-extensions>=4.0.0
 # Optional R support (install R separately)
 # rpy2>=3.5.0  # Uncomment if you want Python-R integration
 
+langchain
