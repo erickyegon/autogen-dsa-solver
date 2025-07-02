@@ -550,12 +550,69 @@ def get_default_euri_client():
     """Get default Euri client instance"""
     return QuietEuriChatCompletionClient()
 
+# Enhanced DSA-specific model selection
+DSA_OPTIMIZED_MODELS = {
+    "mathematical": "deepseek-r1-distill-llama-70b",  # Best for math/algorithms
+    "reasoning": "openai/gpt-4o",  # Best for complex reasoning
+    "coding": "deepseek-r1-distill-llama-70b",  # Best for code generation
+    "general": "anthropic/claude-sonnet-4",  # Best for general DSA problems
+    "complex": "gemini-2.5-pro-preview",  # Best for complex multi-step problems
+    "optimization": "qwen-qwq-32b",  # Good for optimization problems
+    "default": "openai/gpt-4o"  # Safe default choice
+}
+
+def get_dsa_optimized_model(problem_type: str = "general", complexity: str = "medium") -> str:
+    """
+    Get the optimal model for specific DSA problem types
+
+    Args:
+        problem_type: Type of DSA problem (mathematical, reasoning, coding, etc.)
+        complexity: Problem complexity (easy, medium, hard, expert)
+
+    Returns:
+        Model name optimized for the problem type
+    """
+    # Map complexity to model preference
+    if complexity.lower() == "expert":
+        return DSA_OPTIMIZED_MODELS.get("complex", DSA_OPTIMIZED_MODELS["default"])
+    elif problem_type.lower() in ["math", "mathematical", "number_theory"]:
+        return DSA_OPTIMIZED_MODELS["mathematical"]
+    elif problem_type.lower() in ["graph", "dynamic_programming", "complex_algorithms"]:
+        return DSA_OPTIMIZED_MODELS["reasoning"]
+    elif problem_type.lower() in ["implementation", "coding", "data_structures"]:
+        return DSA_OPTIMIZED_MODELS["coding"]
+    elif problem_type.lower() in ["optimization", "scheduling", "greedy"]:
+        return DSA_OPTIMIZED_MODELS["optimization"]
+    else:
+        return DSA_OPTIMIZED_MODELS["general"]
+
+def create_dsa_client(problem_type: str = "general", complexity: str = "medium",
+                     custom_model: str = None) -> QuietEuriChatCompletionClient:
+    """
+    Create a model client optimized for DSA problems
+
+    Args:
+        problem_type: Type of DSA problem
+        complexity: Problem complexity level
+        custom_model: Override with custom model if specified
+
+    Returns:
+        Optimized QuietEuriChatCompletionClient instance
+    """
+    if custom_model:
+        model = custom_model
+    else:
+        model = get_dsa_optimized_model(problem_type, complexity)
+
+    print(f"🤖 Selected model: {AVAILABLE_MODELS[model]['name']} for {problem_type} ({complexity})")
+    return QuietEuriChatCompletionClient(model=model)
+
 # Compatibility functions for existing code
-def model_client(model: str = "deepseek-r1-distill-llama-70b"):
+def model_client(model: str = "openai/gpt-4o"):
     """Create a model client with specified model - compatibility function"""
     return QuietEuriChatCompletionClient(model=model)
 
-def get_model_client(model: str = "deepseek-r1-distill-llama-70b"):
+def get_model_client(model: str = "openai/gpt-4o"):
     """Get model client instance with specified model - compatibility function"""
     return QuietEuriChatCompletionClient(model=model)
 
