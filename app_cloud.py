@@ -38,6 +38,9 @@ elif GEMINI_API_KEY:
 else:
     st.warning("⚠️ No API key configured. Some features may be limited.")
 
+# Enhanced features availability (for cloud deployment)
+ENHANCED_AVAILABLE = True  # Set to True for cloud deployment
+
 # Define supported languages
 SUPPORTED_LANGUAGES = {
     "Python": {"extension": ".py", "comment": "#", "template": "python_template"},
@@ -45,6 +48,30 @@ SUPPORTED_LANGUAGES = {
     "C++": {"extension": ".cpp", "comment": "//", "template": "cpp_template"},
     "JavaScript": {"extension": ".js", "comment": "//", "template": "js_template"},
     "R": {"extension": ".R", "comment": "#", "template": "r_template"}
+}
+
+# Language configuration for enhanced features
+LANGUAGE_CONFIG = {
+    "Python": {
+        "strengths": ["Data Science", "AI/ML", "Rapid Prototyping"],
+        "best_for": ["Algorithms", "Data Analysis", "Scientific Computing"]
+    },
+    "Java": {
+        "strengths": ["Enterprise", "Performance", "Scalability"],
+        "best_for": ["Large Systems", "Backend Services", "Android Apps"]
+    },
+    "C++": {
+        "strengths": ["Performance", "System Programming", "Memory Control"],
+        "best_for": ["Game Development", "Embedded Systems", "High-Performance Computing"]
+    },
+    "JavaScript": {
+        "strengths": ["Web Development", "Full-Stack", "Real-time Apps"],
+        "best_for": ["Frontend", "Node.js Backend", "Interactive Visualizations"]
+    },
+    "R": {
+        "strengths": ["Statistical Analysis", "Data Visualization", "Research"],
+        "best_for": ["Data Science", "Biostatistics", "Academic Research"]
+    }
 }
 
 # --- Helper Functions ---
