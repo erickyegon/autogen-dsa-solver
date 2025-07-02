@@ -304,6 +304,11 @@ autogen_studio_cache/
 # PROJECT SPECIFIC
 # =============================================================================
 
+# YouTube Recording Scripts (Private - Not for public repo)
+YouTube_Recording_Script*.md
+Live_Challenge_Problems.md
+*_recording_script*.md
+
 # Generated code files
 generated/
 output/
