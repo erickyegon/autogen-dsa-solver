@@ -86,8 +86,8 @@ graph TB
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/dsa-solver-ai.git
-   cd dsa-solver-ai
+   git clone https://github.com/erickyegon/autogen-dsa-solver.git
+   cd autogen-dsa-solver
    ```
 
 2. **Create virtual environment**
@@ -425,12 +425,15 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Support
 
-- 📧 Email: support@example.com
-- 💬 Discord: [Join our community](https://discord.gg/example)
-- 🐛 Issues: [GitHub Issues](https://github.com/yourusername/dsa-solver-ai/issues)
+- 📧 Email: [erickyegon@gmail.com](mailto:erickyegon@gmail.com)
+- 💬 GitHub Discussions: [Join the conversation](https://github.com/erickyegon/autogen-dsa-solver/discussions)
+- 🐛 Issues: [Report bugs & request features](https://github.com/erickyegon/autogen-dsa-solver/issues)
+- 🌟 Follow: [@erickyegon](https://github.com/erickyegon) for updates
 
 ---
 
 <div align="center">
-  <strong>Built with ❤️ for the coding community</strong>
+  <strong>Built with ❤️ by <a href="https://github.com/erickyegon">@erickyegon</a> for the coding community</strong>
+  <br>
+  <em>Empowering developers to master Data Structures & Algorithms with AI</em>
 </div>
